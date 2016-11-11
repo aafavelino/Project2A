@@ -103,7 +103,7 @@ namespace MAT309
 
 		// REMOVE A LINHA ABAIXO:
 		
-		numberOfPoints = 0;
+
 
 	}
 

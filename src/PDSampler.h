@@ -100,6 +100,7 @@ namespace MAT309
 	    //
 	    // DEFINA OS DADOS PRIVADOS AQUI
 	    //
+               spSamplePoint P = std::make_shared<SamplePoint>( SamplePoint( ) );
 
 	public:
 
