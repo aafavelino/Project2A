@@ -1,18 +1,16 @@
 /**
- * \file MyCylinder.h
+ * \file Cone.h
  *
- * \brief This file contains the definition of a class to represent an
- * open cylinder defined  by a parametric equation  over a rectangular
- * domain.
  *
  * \author
- * Marcelo Ferreira Siqueira \n
+ * Adelino Afonso e Irene Ginani \n
  * Universidade Federal do Rio Grande do Norte, \n
- * Departamento de Matem&aacute;tica, \n
- * mfsiqueira at mat (dot) ufrn (dot) br
+ * Instituto Metr&oacute;pole Digital, \n
+ * Adelino Afonso at imd (dot) ufrn (dot) br, \n
+ * Irene Ginani at imd (dot) ufrn (dot) br
  *
  * \version 1.0
- * \date October 2016
+ * \date May 2016
  *
  * \attention This program is distributed WITHOUT ANY WARRANTY, and it
  *            may be freely redistributed under the condition that the
@@ -47,11 +45,9 @@ namespace MAT309
 {
 
 	/**
-	 * \class MyCylinder
+	 * \class Cone
 	 *
-	 * \brief This  class is  an abstract  class that  represents open
-	 * cylinder defined  by a  parametric equation over  a rectangular
-	 * domain.
+	 * \brief Class for representation of a cone
 	 *
 	 */
 	class Cone : public Surface
@@ -68,7 +64,7 @@ namespace MAT309
 		const double _u1;          ///< Upper bound for the first coordinate of a point in the parameter domain.
 		const double _v0;          ///< Lower bound for the second coordinate of a point in the parameter domain.
 		const double _v1;          ///< Upper bound for the second coordinate of a point in the parameter domain.
-		const double _radius;      ///< Radius of the cylinder.
+		const double _radius;      ///< Radius of the cone.
 		
 	  
 	public:
@@ -80,7 +76,7 @@ namespace MAT309
 		// -----------------------------------------------------------
 
 		/**
-		 * \fn MyCylinder()
+		 * \fn Cone()
 		 *
 		 * \brief Creates an instance of this class.
 		 *
@@ -91,7 +87,7 @@ namespace MAT309
 
 		
 		/**
-		 * \fn virtual ~MyCylinder()
+		 * \fn virtual ~Cone()
 		 *
 		 * \brief  Releases the  memory held  by an  instance of  this
 		 * class.

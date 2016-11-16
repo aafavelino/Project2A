@@ -1,14 +1,13 @@
 /**
  * \file PDSampler.h
  *
- * \brief bla bla bla
  *
  * \author
- * Fulano e Beltrano \n
+ * Adelino Afonso e Irene Ginani \n
  * Universidade Federal do Rio Grande do Norte, \n
  * Instituto Metr&oacute;pole Digital, \n
- * fulano at imd (dot) ufrn (dot) br, \n
- * beltrano at imd (dot) ufrn (dot) br
+ * Adelino Afonso at imd (dot) ufrn (dot) br, \n
+ * Irene Ginani at imd (dot) ufrn (dot) br
  *
  * \version 1.0
  * \date May 2016
@@ -155,7 +154,7 @@ namespace MAT309
 		/**
 		 * \fn void sample(const spSurface& surface, size_t& numberOfPoints, std::vector<spPoint>& points)
 		 *
-		 * \brief bla bla bla
+		 * \brief Função para espalhar a amostragem de pontos
 		 *
 		 * \param surface A pointer to the surface to be sampled.
 		 * \param numberOfPoints A reference to the number of sample points.
@@ -190,11 +189,25 @@ namespace MAT309
 		//
 		// ---------------------------------------------------------------
 
-		//
-		// INSIRA OS SEUS MÉTODOS AQUI.
-		// 
+		/**
+		 * \fn GerarAleatorio(MAT309::SamplePoint &p);
+		 *
+		 * \brief Função para gerar os pontos aleatórios na malha
+		 *
+		 * \param p Malha para gerar pontos
+		 * 
+		 */
 		void GerarAleatorio(MAT309::SamplePoint &p);
 
+		/**
+		 * \fn double calcularDistancia(MAT309::cdt::DtPoint &p, MAT309::cdt::DtPoint &p1);
+		 *
+		 * \brief Função destinada a calcular a distância entre pontos
+		 *
+		 * \param p Ponto de cordenadas
+		 * \param p1 Ponto de cordenadas 
+		 * 
+		 */
 		double calcularDistancia(MAT309::cdt::DtPoint &p, MAT309::cdt::DtPoint &p1);
 	};
 

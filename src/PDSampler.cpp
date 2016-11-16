@@ -43,7 +43,7 @@ namespace MAT309
     /**
 	 * \fn void PDSampler::sample(const spSurface& surface, size_t& numberOfPoints, std::vector<spPoint>& points)
 	 *
-	 * \brief bla bla bla
+	 * \brief Função para espalhar a amostragem de pontos
 	 *
 	 * \param surface A pointer to the surface to be sampled.
 	 * \param numberOfPoints A reference to the number of sample points.
@@ -166,6 +166,15 @@ namespace MAT309
 		numberOfPoints = points.size();
 
 	}
+
+		/**
+		 * \fn GerarAleatorio(MAT309::SamplePoint &p);
+		 *
+		 * \brief Função para gerar os pontos aleatórios na malha
+		 *
+		 * \param p Malha para gerar pontos
+		 * 
+		 */	
 	void PDSampler::GerarAleatorio(MAT309::SamplePoint &p){
 
 			MAT309::Random *r = nullptr;
@@ -178,7 +187,15 @@ namespace MAT309
 			//delete r;
 		
 		}
-		
+		/**
+		 * \fn double calcularDistancia(MAT309::cdt::DtPoint &p, MAT309::cdt::DtPoint &p1);
+		 *
+		 * \brief Função destinada a calcular a distância entre pontos
+		 *
+		 * \param p Ponto de cordenadas
+		 * \param p1 Ponto de cordenadas 
+		 * 
+		 */	
 	double PDSampler::calcularDistancia(MAT309::cdt::DtPoint &p, MAT309::cdt::DtPoint &p1){
 
 			double matrizJ[3][2];

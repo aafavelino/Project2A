@@ -4,11 +4,11 @@
  * \brief Explains what your program does
  *
  * \author
- * Fulano e Beltrano \n
+ * Adelino Afonso e Irene Ginani \n
  * Universidade Federal do Rio Grande do Norte, \n
  * Instituto Metr&oacute;pole Digital, \n
- * fulano at imd (dot) ufrn (dot) br, \n
- * beltrano at imd (dot) ufrn (dot) br
+ * Adelino Afonso at imd (dot) ufrn (dot) br, \n
+ * Irene Ginani at imd (dot) ufrn (dot) br
  *
  * \version 1.0
  * \date October 2016
@@ -67,13 +67,15 @@ using MAT309::PDSampler;
 // -------------------------------------------------------------------
 
 //#include "MyCylinder.h"             // MAT309::MyCylinder
-//#include "Esfera.h"
-#include "Cone.h"
+//#include "Esfera.h"				// MAT309::Esfera	
+#include "Cone.h"					// MAT309::Cone
 // -------------------------------------------------------------------
 // Opte por inserir um "using" para a sua classe de superfície.
 // -------------------------------------------------------------------
 
 using MAT309::Cone;
+//using MAT309::Esfera;
+//using MAT309::MyCylinder;
 
 /********************************************************************/
 
@@ -170,6 +172,8 @@ int main(int argc, char* argv[])
 	// algorithm. You can replace this  surface with other surface you
 	// define.
 	std::shared_ptr<Cone> mySurface = std::make_shared<Cone>();
+	//std::shared_ptr<Esfera> mySurface = std::make_shared<Esfera>();
+	//std::shared_ptr<MyCylinder> mySurface = std::make_shared<MyCylinder>();
 
 	// Define the sampler.
 	PDSampler sampler;
