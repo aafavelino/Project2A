@@ -23,10 +23,6 @@ Adelino Afonso Fernandes Avelino
 Irene Ginani Costa Pinheiro 
  - [GitHub](https://github.com/IreneGinani)
 
-##Politica de colaboração
-
-**Colaborador**
-
 Marcelo Ferreira Siqueira
  - [Sigaa](https://sigaa.ufrn.br/sigaa/public/docente/portal.jsf?siape=1171465)
 
