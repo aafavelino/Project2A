@@ -99,8 +99,11 @@ namespace MAT309
 
 	    //
 	    // DEFINA OS DADOS PRIVADOS AQUI
+			double alpha = 0.1;
+	    	double MT = 100;
+	     	spSurface surface;
+	
 	    //
-               spSamplePoint P = std::make_shared<SamplePoint>( SamplePoint( ) );
 
 	public:
 
@@ -166,6 +169,19 @@ namespace MAT309
 		);
 
 
+	
+		spSurface getSurface(){
+			return surface;
+		}
+
+		double getAlpha(){
+			return alpha;
+		}
+
+		double getMT(){
+			return MT;
+		}
+
 	private:
 
 		// ---------------------------------------------------------------
@@ -177,8 +193,9 @@ namespace MAT309
 		//
 		// INSIRA OS SEUS MÉTODOS AQUI.
 		// 
+		void GerarAleatorio(MAT309::SamplePoint &p);
 
-
+		double calcularDistancia(MAT309::cdt::DtPoint &p, MAT309::cdt::DtPoint &p1);
 	};
 
 }

@@ -66,13 +66,14 @@ using MAT309::PDSampler;
 // como definir a sua superfície examinando o código de MyCylinder.h.
 // -------------------------------------------------------------------
 
-#include "MyCylinder.h"             // MAT309::MyCylinder
-
+//#include "MyCylinder.h"             // MAT309::MyCylinder
+//#include "Esfera.h"
+#include "Cone.h"
 // -------------------------------------------------------------------
 // Opte por inserir um "using" para a sua classe de superfície.
 // -------------------------------------------------------------------
 
-using MAT309::MyCylinder;
+using MAT309::Cone;
 
 /********************************************************************/
 
@@ -168,7 +169,7 @@ int main(int argc, char* argv[])
 	// This  is   the  surface   you  will   sample  using   your  PDS
 	// algorithm. You can replace this  surface with other surface you
 	// define.
-	std::shared_ptr<MyCylinder> mySurface = std::make_shared<MyCylinder>();
+	std::shared_ptr<Cone> mySurface = std::make_shared<Cone>();
 
 	// Define the sampler.
 	PDSampler sampler;

@@ -24,7 +24,7 @@
 
 #include "PDSampler.h"     // PDSampler
 #include "Random.h"        // Random
-
+#include <cmath>
 
 /**
  * \defgroup MAT309NameSpace Namespace MAT309.
@@ -57,6 +57,66 @@ namespace MAT309
 			std::vector<spPoint>& points
 		)
 	{
+
+		this->surface = surface;
+
+		points.clear(); 
+
+		SamplePoint::Point pos, pos1, pos2, pos3;
+
+		surface->GetPoint(surface->GetUMin(), surface->GetVMin(), pos._x, pos._y, pos._z );
+		spSamplePoint Min0 = std::make_shared<SamplePoint>(SamplePoint(surface->GetUMin(), surface->GetVMin(), pos));
+
+		surface->GetPoint(surface->GetUMax(), surface->GetVMin(), pos1._x, pos1._y, pos1._z );
+		spSamplePoint Min1 = std::make_shared<SamplePoint>(SamplePoint(surface->GetUMax(), surface->GetVMin(), pos1) );
+
+		surface->GetPoint(surface->GetUMin(), surface->GetVMax(), pos2._x, pos2._y, pos2._z );
+		spSamplePoint Max0 = std::make_shared<SamplePoint>(SamplePoint(surface->GetUMin(), surface->GetVMax(), pos2));
+
+		surface->GetPoint(surface->GetUMax(), surface->GetVMax(), pos3._x, pos3._y, pos3._z );
+		spSamplePoint Max1 = std::make_shared<SamplePoint>(SamplePoint(surface->GetUMax(), surface->GetVMax(), pos3) );
+
+		double trials = 0;
+
+		bool conflicted;
+
+		points.push_back(Min0);
+		points.push_back(Min1);
+		points.push_back(Max0);
+		points.push_back(Max1);
+		
+
+		
+
+		while (trials < getMT()){
+
+			SamplePoint p;
+
+			GerarAleatorio(p);
+
+			spSamplePoint pontoAleatorioF = std::make_shared<SamplePoint>(p);
+			
+			conflicted = false;
+
+			for (unsigned int i = 0; i < points.size(); i++){
+				if ((calcularDistancia(*pontoAleatorioF,*points[i]) < 2*getAlpha()) or (calcularDistancia(*points[i],*pontoAleatorioF) < 2*getAlpha())){
+					conflicted = true;
+				}
+			}
+			if (!conflicted){
+
+				//points.push_back(pontoAleatorio);
+				points.push_back(pontoAleatorioF);
+				//std::cout << "entrou"<< points.size();	
+				trials = 0;
+
+			}else {
+
+				trials++;
+			}
+			
+		}
+
 	    // INSIRA CÓDIGO AQUI!
 
 		// -----------------------------------------------------------
@@ -103,9 +163,77 @@ namespace MAT309
 
 		// REMOVE A LINHA ABAIXO:
 		
-
+		numberOfPoints = points.size();
 
 	}
+	void PDSampler::GerarAleatorio(MAT309::SamplePoint &p){
 
+			MAT309::Random *r = nullptr;
+			double x = getSurface()->GetUMin() + (r->draw()*(getSurface()->GetUMax()-getSurface()->GetUMin()));
+			double y = getSurface()->GetVMin() + (r->draw()*(getSurface()->GetVMax()-getSurface()->GetVMin()));
+			getSurface()->GetPoint(x,y, p._pos._x,p._pos._y, p._pos._z);
+			p.SetParameterCoordinates(x, y);
+
+			
+			//delete r;
+		
+		}
+		
+	double PDSampler::calcularDistancia(MAT309::cdt::DtPoint &p, MAT309::cdt::DtPoint &p1){
+
+			double matrizJ[3][2];
+			double matrizJt[2][3];
+			double pp1[1][2];
+			double pp1t[2][1];
+			double result[1][3];
+			double result1[3][1];
+			double resultado_final;
+			double x,y,z,x1,y1,z1;
+
+			pp1[0][0] = p1.GetU()- p.GetU();
+			pp1[0][1] = p1.GetV() - p.GetV();
+
+			pp1t[0][0] = p1.GetU()- p.GetU();
+			pp1t[1][0] = p1.GetV() - p.GetV();
+
+
+			getSurface()->GetDu(p.GetU(),p.GetV(),x,y,z);
+			getSurface()->GetDv(p.GetU(),p.GetV(),x1,y1,z1);
+
+			//std::cout << x << "  " << x1 << " " << y <<" "<<y1<<" "<< z << "  "<<z1<<"\n";
+			//std::cout << pp1[0][0] << "  "<<pp1[0][1]<<"\n";
+
+			matrizJ[0][0] = x;
+			matrizJ[0][1] = x1;
+			matrizJ[1][0] = y;
+			matrizJ[1][1] = y1;
+			matrizJ[2][0] = z;
+			matrizJ[2][1] = z1;
+
+
+			matrizJt[0][0] = x;
+			matrizJt[0][1] = y;
+			matrizJt[0][2] = z;
+			matrizJt[1][0] = x1;
+			matrizJt[1][1] = y1;
+			matrizJt[1][2] = z1;
+
+
+			result[0][0] = (pp1[0][0] * matrizJt[0][0]) + (pp1[0][1] * matrizJt[1][0]);
+			result[0][1] = (pp1[0][0] * matrizJt[0][1]) + (pp1[0][1] * matrizJt[1][1]);
+			result[0][2] = (pp1[0][0] * matrizJt[0][2]) + (pp1[0][1] * matrizJt[1][2]);
+
+
+			result1[0][0] = (pp1t[0][0] * matrizJ[0][0]) + (pp1t[1][0] * matrizJ[0][1]);
+			result1[1][0] = (pp1t[0][0] * matrizJ[1][0]) + (pp1t[1][0] * matrizJ[1][1]);
+			result1[2][0] = (pp1t[0][0] * matrizJ[2][0]) + (pp1t[1][0] * matrizJ[2][1]);
+			
+			
+			resultado_final = (result[0][0] * result1[0][0]) + (result[0][1] * result1[1][0]) + (result[0][2] * result1[2][0]);
+			
+			return sqrt(resultado_final);
+			
+
+		}
 }
 /** @} */ //end of group class.
