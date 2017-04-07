@@ -1,21 +1,21 @@
-#Projeto 2A 
+# Projeto 2A 
 
-##Descrição
+## Descrição
 
 [Projeto Algébra Linear](https://github.com/aafavelino/Project2A/blob/master/pdsampling.pdf)
 
-##Compilação 
+## Compilação 
 ```shell
 sh compile.sh
 ```
 
-##Execução
+## Execução
 ```shell
 sh sh run.sh alguma_coisa.vtk
 ```
 Para visualizar as imagens sugiro que utilize o mashlab...
 
-##Autores:
+## Autores:
 
 Adelino Afonso Fernandes Avelino
  - [GitHub](https://github.com/aafavelino)
@@ -26,7 +26,7 @@ Irene Ginani Costa Pinheiro
 Marcelo Ferreira Siqueira
  - [Sigaa](https://sigaa.ufrn.br/sigaa/public/docente/portal.jsf?siape=1171465)
 
-##Disponível em:
+## Disponível em:
 
 [Projeto Algébra Linear](https://github.com/aafavelino/Project2A)
 
